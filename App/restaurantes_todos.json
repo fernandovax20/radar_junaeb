@@ -1,0 +1,770 @@
+[
+    {
+        "nombre": "Subway",
+        "horario_semana": "9:00 - 22:00",
+        "horario_sabado": "9:00 - 22:00",
+        "horario_domingo": "9:00 - 22:00",
+        "horario_festivos": "9:00 - 22:00",
+        "direccion": "toesca 1844",
+        "latitud": -33.45328550749546,
+        "longitud": -70.6609046486095,
+        "categoria": "Sandwiches",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dl69c5hu3/image/upload/v1730928628/kbekhh7qellh25zj5t10.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Dunking donuts",
+        "horario_semana": "7:30 - 21:00",
+        "horario_sabado": "7:30 - 21:00",
+        "horario_domingo": "8:30 - 20:30",
+        "horario_festivos": "8:30 - 20:30",
+        "direccion": "toesca 1844",
+        "latitud": -33.45328550749546,
+        "longitud": -70.6609046486095,
+        "categoria": "Sandwiches",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dl69c5hu3/image/upload/v1730928634/i8hkzgrtpooiihrswvpk.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Ikigai",
+        "horario_semana": "8:00 - 19:30",
+        "horario_sabado": "Cerrado",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Gorbea 1765",
+        "latitud": -33.4510058811124,
+        "longitud": -70.6580486248754,
+        "categoria": "Desayuno, Cafe, Dulce",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941394/ohyetjwefyolhnfnimbc.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Cafetería Rumary",
+        "horario_semana": "9:30 - 19:00",
+        "horario_sabado": "Cerrado",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Gorbea 1785",
+        "latitud": -33.4515746830334,
+        "longitud": -70.6597946490885,
+        "categoria": "Completos, Empanadas, Hamburguesas, Pizzas, Vegana, Sandwiches, Fajitas, Churrasco, Ensaladas, Cafe",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941396/n48ohcucddzuipihpatf.jpg|https://res.cloudinary.com/dycayfdrp/image/upload/v1730941397/luby16shzxolcyotuusz.jpg|https://res.cloudinary.com/dycayfdrp/image/upload/v1730941395/vnyd4hwgfeahi6yqbjkx.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Queen Papas",
+        "horario_semana": "11:00 - 20:00",
+        "horario_sabado": "Cerrado",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Gorbea 1793",
+        "latitud": -33.4516371411874,
+        "longitud": -70.6600423527914,
+        "categoria": "Completos, Papas Fritas, Vegana",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941398/vyxnysmxf86xbmsehjyu.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Zanahoria Vida",
+        "horario_semana": "10:15 - 20:30",
+        "horario_sabado": "11:30 - 17:00",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Av. Ejército Libertador 398",
+        "latitud": -33.4518273632893,
+        "longitud": -70.660498946886,
+        "categoria": "Gohan, Ensaladas, Fajitas, Handroll, Papas Fritas",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941399/aptw2af6fa2b4taxvvuj.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Hels Sushi",
+        "horario_semana": "9:30 - 22:00",
+        "horario_sabado": "11:30 - 22:30",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Vergara 398",
+        "latitud": -33.4518506995336,
+        "longitud": -70.6611644951196,
+        "categoria": "Sushi",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941400/tjuwebdaanvakypvyznf.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Oregamo",
+        "horario_semana": "9:00 - 23:00",
+        "horario_sabado": "9:00 - 23:00",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Gorbea 2017",
+        "latitud": -33.4522834929294,
+        "longitud": -70.6628005581279,
+        "categoria": "Completos, Churrasco, Papas Fritas",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941401/fmshwy4w9hfvv5ykjqnt.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "L12 Fuegos del Hambre",
+        "horario_semana": "12:30 - 22:00",
+        "horario_sabado": "12:30 - 22:00",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Gorbea 2063",
+        "latitud": -33.4523286487397,
+        "longitud": -70.6635351374477,
+        "categoria": "Completos, Hamburguesas, Papas Fritas, Fajitas",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941402/sg588jktujxrj7qpk2bf.jpg|https://res.cloudinary.com/dycayfdrp/image/upload/v1730941403/bbp4ojko8r0p6w8111sa.jpg|https://res.cloudinary.com/dycayfdrp/image/upload/v1730941404/zgxiazimspdtrzezcrdj.jpg|https://res.cloudinary.com/dycayfdrp/image/upload/v1730941405/xzjf0xywko0hopzdmliz.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Fábrica de los Completos",
+        "horario_semana": "11:30 - 23:00",
+        "horario_sabado": "11:30 - 21:00",
+        "horario_domingo": "12:30 - 21:00",
+        "horario_festivos": "12:30 - 21:00",
+        "direccion": "Gorbea 2071",
+        "latitud": -33.4523520365621,
+        "longitud": -70.6635166779242,
+        "categoria": "Completos, Hamburguesas, Papas Fritas, Empanadas",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941405/xnuqnlejgdplco1i3olg.jpg|https://res.cloudinary.com/dycayfdrp/image/upload/v1730941406/wpbftd99tec4t4eclkg1.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Merey Market",
+        "horario_semana": "9:30 - 21:30",
+        "horario_sabado": "9:30 - 21:30",
+        "horario_domingo": "9:30 - 21:30",
+        "horario_festivos": "9:30 - 21:30",
+        "direccion": "Gorbea 2077",
+        "latitud": -33.4524166973617,
+        "longitud": -70.6636954662836,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": ""
+            }
+        ]
+    },
+    {
+        "nombre": "Gorbea Sushi",
+        "horario_semana": "12:00 - 22:30",
+        "horario_sabado": "12:00 - 22:30",
+        "horario_domingo": "12:00 - 22:30",
+        "horario_festivos": "12:00 - 22:30",
+        "direccion": "Gorbea 2081",
+        "latitud": -33.4524545416548,
+        "longitud": -70.6636994139482,
+        "categoria": "Sushi",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941407/zuepeo5dfvjlpeuqx97f.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Kyto Sushi",
+        "horario_semana": "10:00 - 20:00",
+        "horario_sabado": "12:00 - 20:00",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Gorbea 2145",
+        "latitud": -33.4526965463588,
+        "longitud": -70.6647665625806,
+        "categoria": "Handroll, Gohan, Vegano",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941408/cu3nom714q4pal3lsi7h.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Nikova Sushi",
+        "horario_semana": "00:00 - 23:59",
+        "horario_sabado": "00:00 - 23:59",
+        "horario_domingo": "00:00 - 23:59",
+        "horario_festivos": "00:00 - 23:59",
+        "direccion": "Sazié 1799",
+        "latitud": -33.449232080672324,
+        "longitud": -70.6609301909377,
+        "categoria": "Handroll, Gohan, Sushi, Vegano",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731021087/nikova1_ehvqoz.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021087/nikova2_ipsv3t.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Oxxo",
+        "horario_semana": "07:15 - 21:00",
+        "horario_sabado": "08:00 - 21:00",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Av. Ejército Libertador 77",
+        "latitud": -33.44776832121025,
+        "longitud": -70.66153250628182,
+        "categoria": "Sandwiches, Empanadas, Lasaña, Pizza, Ravioli",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731021374/oxxo4_k4auez.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021373/oxxo3_rv5ykp.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021373/oxxo2_fuv0t4.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021372/oxxo1_ttugkf.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021370/oxxo16_r3xpaa.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021367/oxxo13_in7ttz.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021366/oxxo15_s18bbt.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021366/oxxo14_udsm4c.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021365/oxxo11_omcjp2.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021364/oxxo12_hyirl2.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021359/oxxo8_xpwlol.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021358/oxxo9_ykatlp.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021357/oxxo10_anfsk8.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021357/oxxo6_gm67ut.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021356/oxxo5_ixnbzd.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021356/oxxo7_dlo0az.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021374/oxxo4_k4auez.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021373/oxxo3_rv5ykp.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021373/oxxo2_fuv0t4.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021372/oxxo1_ttugkf.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021370/oxxo16_r3xpaa.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021367/oxxo13_in7ttz.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021366/oxxo15_s18bbt.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021366/oxxo14_udsm4c.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021365/oxxo11_omcjp2.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021364/oxxo12_hyirl2.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021359/oxxo8_xpwlol.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021358/oxxo9_ykatlp.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021357/oxxo10_anfsk8.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021357/oxxo6_gm67ut.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021356/oxxo5_ixnbzd.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021356/oxxo7_dlo0az.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Subway",
+        "horario_semana": "09:00 - 21:00",
+        "horario_sabado": "09:00 - 21:00",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Av. Ejército Libertador 71",
+        "latitud": -33.447699133051685,
+        "longitud": -70.66169110442983,
+        "categoria": "Sandwiches",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731021596/subway_oatvyn.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "Pandita",
+        "horario_semana": "09:00 - 21:00",
+        "horario_sabado": "Cerrado",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Av. Ejército Libertador 40",
+        "latitud": -33.44722708413409,
+        "longitud": -70.66134633511781,
+        "categoria": "Desayuno, Cafe, Dulce, Sandwiches",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731021669/pandita_irblbb.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "RIKA'S",
+        "horario_semana": "11:30 - 22:00",
+        "horario_sabado": "11:30 - 22:00",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Av. Ejército Libertador 36",
+        "latitud": -33.447190836124136,
+        "longitud": -70.66124098908588,
+        "categoria": "Pizza, Lasaña, Sandwiches",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731021748/rika1_ix7kjj.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021747/rika2_bivz77.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "A Donde Sea",
+        "horario_semana": "09:00 - 21:00",
+        "horario_sabado": "09:00 - 21:00",
+        "horario_domingo": "09:00 - 21:00",
+        "horario_festivos": "09:00 - 21:00",
+        "direccion": "Av. Ejército Libertador 17",
+        "latitud": -33.44712980347847,
+        "longitud": -70.66159367925762,
+        "categoria": "Completos, Churrasco, Papas Fritas, Colacion",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731021858/donde_qpjaxz.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "El Italiano Veloz",
+        "horario_semana": "08:30 - 21:00",
+        "horario_sabado": "09:00 - 16:00",
+        "horario_domingo": "Cerrado",
+        "horario_festivos": "Cerrado",
+        "direccion": "Grajales 2171",
+        "latitud": -33.4515530474515,
+        "longitud": -70.66582204490558,
+        "categoria": "Completos, Fajitas",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731021984/italianoveloz1_wpqaub.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021984/italianoveloz2_djar4i.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Aída",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 1722",
+        "latitud": -33.447116,
+        "longitud": -70.656794,
+        "categoria": "Colacion, Sandwiches, Empanadas",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730955641/aida_fmpjjg.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "La Tía",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 199",
+        "latitud": -33.44970227,
+        "longitud": -70.66223024,
+        "categoria": "Completos, Churrasco, Empanadas, Sopaipillas, Pizza, Fajitas, Cafe, Desayuno",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730956605/latia1_syennz.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1730956606/latia2_w6v4jw.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1730956605/latia3_tji1kw.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1730956604/latia4_vcikh1.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Los Pandas",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 1915",
+        "latitud": -33.4497554,
+        "longitud": -70.66236232,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730956785/pandas2_vkqlvl.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1730956785/pandas1_ml2czl.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Rika's",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Echaurren 202",
+        "latitud": -33.45065241,
+        "longitud": -70.66614858,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731021748/rika1_ix7kjj.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731021747/rika2_bivz77.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Restaurante HengXin",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 2196",
+        "latitud": -33.45077533,
+        "longitud": -70.66615886,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957022/hengxin_jzgam8.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Abhay Charan comida Vegana y Vegetariana",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 2180",
+        "latitud": -33.45075743,
+        "longitud": -70.66600195,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957018/ahbay_skawxa.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "El Clan",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 2170",
+        "latitud": -33.45074848,
+        "longitud": -70.66584437,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957019/elclan_c0njug.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Isabella Restobar Handroll, Waffles Y Crepes",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 2158",
+        "latitud": -33.45068108,
+        "longitud": -70.66578282,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957017/isabella_tfstri.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Restaurant Xin Qing Fung",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 2161",
+        "latitud": -33.45046524,
+        "longitud": -70.66566847,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957016/xin_wnegbn.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Chicken Tea",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 2069",
+        "latitud": -33.44946926,
+        "longitud": -70.66305571,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957015/chiken_sc91ft.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Ok Delicias",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 2180",
+        "latitud": -33.45081793,
+        "longitud": -70.66594696,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957015/ok_wbhfdp.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Happy Food",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 1968",
+        "latitud": -33.45004054,
+        "longitud": -70.6630086,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957014/happy_rubjud.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Sin Nombre",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 1972",
+        "latitud": -33.45005156,
+        "longitud": -70.66311537,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957013/noname_at74ce.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "My toli",
+        "horario_semana": "",
+        "horario_sabado": "",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Sazié 1978",
+        "latitud": -33.45000904,
+        "longitud": -70.66312609,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730957022/mytoli_wxkjid.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "PanMerced",
+        "horario_semana": "9:00 - 20:00",
+        "horario_sabado": "9:00 - 20:00",
+        "horario_domingo": "9:00 - 20:00",
+        "horario_festivos": "9:00 - 20:00",
+        "direccion": "Vergara 416",
+        "latitud": -33.45160376077428,
+        "longitud": -70.66140123862642,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731022137/panmerced1_kl2slt.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731022137/panmerced2_ovhd8l.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "RikaCoffeLuna",
+        "horario_semana": "8:00 - 18:00",
+        "horario_sabado": "8:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 239",
+        "latitud": -33.450124993341255,
+        "longitud": -70.66202834603398,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731022250/rikacoffe2_bcfsxy.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731022250/rikacoffe1_f52wnh.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "RikaPastaPizza",
+        "horario_semana": "8:00 - 18:00",
+        "horario_sabado": "8:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 134",
+        "latitud": -33.44892165822269,
+        "longitud": -70.66211163274303,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731022376/rikapasta1_mddik3.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731022377/rikapasta2_zxsdsl.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "SalomaSushi",
+        "horario_semana": "13:00 - 18:00",
+        "horario_sabado": "13:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 87",
+        "latitud": -33.448004689621754,
+        "longitud": -70.66251503274296,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731022462/saloma_ejcsmj.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "SenorMonkey",
+        "horario_semana": "13:00 - 20:00",
+        "horario_sabado": "13:00 - 20:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 65",
+        "latitud": -33.44789569341197,
+        "longitud": -70.66266000390722,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731022551/monkey1_nqherw.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731022552/monkey2_b3gnzc.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Barcelona",
+        "horario_semana": "12:00 - 20:00",
+        "horario_sabado": "12:00 - 20:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 199",
+        "latitud": -33.44905007386444,
+        "longitud": -70.66234626137356,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1730955742/barcelona1_o5vloi.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1730955742/barcelona2_biojhs.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1730955742/barcelona3_vmrfsq.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731022960/barcelona3_niqk68.jpghttps://res.cloudinary.com/dnersxsnj/image/upload/v1731022961/barcelona4_oiuj4b.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "En Tu Salsa",
+        "horario_semana": "12:00 - 18:00",
+        "horario_sabado": "12:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 39",
+        "latitud": -33.44742218859993,
+        "longitud": -70.66252566157898,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023193/entusalsa_eqeg9p.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "Miski Wasi",
+        "horario_semana": "13:00 - 18:00",
+        "horario_sabado": "13:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 41",
+        "latitud": -33.44747879276668,
+        "longitud": -70.66244708856375,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023235/miskiwasi_ofipco.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "SuperPleto",
+        "horario_semana": "13:00 - 18:00",
+        "horario_sabado": "13:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 53",
+        "latitud": -33.44770883709418,
+        "longitud": -70.662640632743,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023386/superpleto1_pxbqs0.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731023387/superpleto2_xwmsss.jpg"
+            }
+        ]
+    },
+    {
+        "nombre": "Vergara132",
+        "horario_semana": "10:00 - 18:00",
+        "horario_sabado": "10:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 132",
+        "latitud": -33.448818398634835,
+        "longitud": -70.66210193274296,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023488/nnvergara_pnpnon.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "Oregamo",
+        "horario_semana": "13:00 - 18:00",
+        "horario_sabado": "13:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 237",
+        "latitud": -33.45015584866906,
+        "longitud": -70.6622455039071,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023671/oregamo_bo3xn8.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "JSM312",
+        "horario_semana": "13:00 - 18:00",
+        "horario_sabado": "13:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Jose Miguel Carrera 312",
+        "latitud": -33.45121648539055,
+        "longitud": -70.66310317692208,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023673/jsm_go7jik.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "Greiss",
+        "horario_semana": "08:00 - 18:00",
+        "horario_sabado": "08:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Jose Miguel Carrera 416",
+        "latitud": -33.452628494732416,
+        "longitud": -70.66282528856355,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023726/greiss_if86vc.jpg'"
+            }
+        ]
+    },
+    {
+        "nombre": "Sushi Los Comensales",
+        "horario_semana": "08:00 - 18:00",
+        "horario_sabado": "08:00 - 18:00",
+        "horario_domingo": "",
+        "horario_festivos": "",
+        "direccion": "Vergara 398",
+        "latitud": -33.4518238447377,
+        "longitud": -70.6615614615787,
+        "categoria": "General",
+        "imagenes": [
+            {
+                "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023766/sushicomensales_fo3gzn.jpg'"
+            }
+        ]
+    }
+]

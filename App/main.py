@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+import json
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///restorants.db'
@@ -12,29 +13,60 @@ db = SQLAlchemy(app)
 class Restorant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), nullable=False)
-    descripcion = db.Column(db.String(100), nullable=True)
+    horario_semana = db.Column(db.String(50), nullable=False)
+    horario_sabado = db.Column(db.String(50), nullable=False)
+    horario_domingo = db.Column(db.String(50), nullable=False)
+    horario_festivos = db.Column(db.String(50), nullable=False)
+    direccion = db.Column(db.String(50), nullable=False)
+    latitud = db.Column(db.Float, nullable=False)
+    longitud = db.Column(db.Float, nullable=False)
+    imagenes = db.relationship('Menu', backref='restorant', lazy=True)
+    categoria = db.Column(db.String(50), nullable=False)
+
+class Menu(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    imagen_url = db.Column(db.String(255), nullable=False)
+    restorant_id = db.Column(db.Integer, db.ForeignKey('restorant.id'), nullable=False)
 
 @app.route('/')
 def index():
     # Consultar todos los restaurantes en la base de datos
     restorants = Restorant.query.all()
+    print(restorants[1].nombre)
     return render_template('index.html', restorants=restorants)
 
 with app.app_context():
     # Crear las tablas de la base de datos
     db.create_all()
 
-    # Cargar datos de prueba si la tabla está vacía
+    # Cargar datos desde el archivo JSON si las tablas están vacías
     if not Restorant.query.first():
-        datos_prueba = [
-            Restorant(nombre="Ikigai", descripcion="Café, Sándwiches, más"),
-            Restorant(nombre="Subway", descripcion="Sándwiches"),
-            Restorant(nombre="Dunkin Donuts", descripcion="Café, Sándwiches"),
-            Restorant(nombre="Cafetería Rumary", descripcion="Completos, Papas, Café, más"),
-            Restorant(nombre="Queen Papas", descripcion="Papas, Completos")
-        ]
+        with open('restaurantes_todos.json', 'r') as f:
+            datos_prueba = json.load(f)
+        
+        for dato in datos_prueba:
+            restaurador = Restorant(
+                nombre=dato["nombre"],
+                horario_semana=dato["horario_semana"],
+                horario_sabado=dato["horario_sabado"],
+                horario_domingo=dato["horario_domingo"],
+                horario_festivos=dato["horario_festivos"],
+                direccion=dato["direccion"],
+                latitud=dato["latitud"],
+                longitud=dato["longitud"],
+                categoria=dato["categoria"]
+            )
+            db.session.add(restaurador)
+            db.session.commit()
 
-        db.session.bulk_save_objects(datos_prueba)
+            # Agregar múltiples imágenes para cada restaurante
+            for imagen in dato["imagenes"]:
+                # Dividir las URLs usando el delimitador "|"
+                urls = imagen["imagen_url"].split('|')
+                for url in urls:
+                    menu = Menu(imagen_url=url.strip(), restorant_id=restaurador.id)
+                    db.session.add(menu)
+        
         db.session.commit()
 
 if __name__ == '__main__':
