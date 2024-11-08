@@ -1,15 +1,16 @@
-version: '3.8'
 
 services:
   web:
     build: .
     environment:
-      - FLASK_ENV=production  # Cambia a modo de producción
+      - FLASK_ENV=production  # Modo de producción
     volumes:
       - .:/app
     restart: on-failure
-    expose:
-      - "5050"  # Solo se expone internamente para Nginx Proxy Manager
+    ports:
+      - "5000:5050"  # Map host port 8080 to container port 5050
+    networks:
+      - app-network  # Red compartida
 
   nginx_proxy_manager:
     image: 'jc21/nginx-proxy-manager:latest'
@@ -18,7 +19,6 @@ services:
       - "81:81"     # Panel de administración
       - "443:443"   # HTTPS
     environment:
-      # Variables necesarias para el servicio de Nginx Proxy Manager
       DB_MYSQL_HOST: "db"
       DB_MYSQL_PORT: 3306
       DB_MYSQL_USER: "npm"
@@ -28,6 +28,8 @@ services:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
     restart: always
+    networks:
+      - app-network  # Red compartida
 
   db:
     image: 'mysql:8.0'
@@ -39,6 +41,13 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     restart: always
+    networks:
+      - app-network  # Red compartida
 
 volumes:
   db_data:
+
+networks:
+  app-network:
+    driver: bridge
+
