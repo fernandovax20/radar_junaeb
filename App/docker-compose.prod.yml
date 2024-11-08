@@ -7,8 +7,8 @@ services:
     volumes:
       - .:/app
     restart: on-failure
-    expose:
-      - "5050"  # Expuesto internamente para Nginx Proxy Manager
+    ports:
+      - "5000:5050"  # Map host port 8080 to container port 5050
     networks:
       - app-network  # Red compartida
 
