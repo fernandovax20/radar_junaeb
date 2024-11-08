@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    environment:
+      - FLASK_ENV=production  # Cambia a modo de producción
+    volumes:
+      - .:/app
+    restart: on-failure
+    expose:
+      - "5050"  # Solo se expone internamente para Nginx Proxy Manager
+
+  nginx_proxy_manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    ports:
+      - "80:80"     # HTTP
+      - "81:81"     # Panel de administración
+      - "443:443"   # HTTPS
+    environment:
+      # Variables necesarias para el servicio de Nginx Proxy Manager
+      DB_MYSQL_HOST: "db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm_password"
+      DB_MYSQL_NAME: "npm_db"
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    restart: always
+
+  db:
+    image: 'mysql:8.0'
+    environment:
+      MYSQL_ROOT_PASSWORD: "root_password"
+      MYSQL_DATABASE: "npm_db"
+      MYSQL_USER: "npm"
+      MYSQL_PASSWORD: "npm_password"
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+
+volumes:
+  db_data:
