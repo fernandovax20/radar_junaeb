@@ -9,7 +9,7 @@ app.config['SECRET_KEY'] = 'mi_secreto_super_secreto'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 db = SQLAlchemy(app)
 
-#Constantes para los iconos de las categorias#@ catos hardcode para las categorias
+#Constantes para los iconos de las categorias#@ 
 ICONOS_CATEGORIAS = [
     {'nombre': 'Sandwiche', 'icono': 'fa-solid fa-burger'},
     {'nombre': 'Desayuno', 'icono': 'fa-solid fa-coffee'},
