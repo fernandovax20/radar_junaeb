@@ -9,7 +9,7 @@ app.config['SECRET_KEY'] = 'mi_secreto_super_secreto'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 db = SQLAlchemy(app)
 
-#Constantes para los iconos de las categorias
+#Constantes para los iconos de las categorias#@ catos hardcode para las categorias
 ICONOS_CATEGORIAS = [
     {'nombre': 'Sandwiche', 'icono': 'fa-solid fa-burger'},
     {'nombre': 'Desayuno', 'icono': 'fa-solid fa-coffee'},
@@ -67,6 +67,9 @@ with app.app_context():
     # Crear las tablas de la base de datos
     db.create_all()
 
+
+    #!Todo: Cargar datos de prueba
+
     # Cargar datos desde el archivo JSON si las tablas están vacías
     if not Restorant.query.first():
         with open('restaurantes_todos.json', 'r') as f:
@@ -87,7 +90,7 @@ with app.app_context():
             db.session.add(restaurador)
             db.session.commit()
 
-            # Cosa
+            
 
             # Agregar múltiples imágenes para cada restaurante
             for imagen in dato["imagenes"]:
