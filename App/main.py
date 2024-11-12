@@ -11,19 +11,18 @@ db = SQLAlchemy(app)
 
 #Constantes para los iconos de las categorias
 ICONOS_CATEGORIAS = [
-    {'nombre': 'Sandwiche', 'icono': 'fa-solid fa-burger'},
+    {'nombre': 'Sandwiches', 'icono': 'fa-solid fa-burger'},
     {'nombre': 'Desayuno', 'icono': 'fa-solid fa-coffee'},
     {'nombre': 'Cafe', 'icono': 'fa-solid fa-mug-hot'},
     {'nombre': 'Dulce', 'icono': 'fa-solid fa-candy-cane'},
-    {'nombre': 'Completo', 'icono': 'fa-solid fa-hotdog'},
-    {'nombre': 'Empanada', 'icono': 'fa-solid fa-pastafarianism'},
-    {'nombre': 'Hamburguesa', 'icono': 'fa-solid fa-hamburger'},
+    {'nombre': 'Completos', 'icono': 'fa-solid fa-hotdog'},
+    {'nombre': 'Empanadas', 'icono': 'fa-solid fa-pastafarianism'},
+    {'nombre': 'Hamburguesas', 'icono': 'fa-solid fa-hamburger'},
     {'nombre': 'Pizza', 'icono': 'fa-solid fa-pizza-slice'},
-    {'nombre': 'Vegana', 'icono': 'fa-solid fa-carrot'},
-    {'nombre': 'Fajita', 'icono': 'fa-utensils'},
+    {'nombre': 'Fajitas', 'icono': 'fa-utensils'},
     {'nombre': 'Churrasco', 'icono': 'fa-solid fa-drumstick-bite'},
-    {'nombre': 'Ensalada', 'icono': 'fa-solid fa-leaf'},
-    {'nombre': 'Papas Frita', 'icono': 'fa-utensils'},
+    {'nombre': 'Ensaladas', 'icono': 'fa-solid fa-leaf'},
+    {'nombre': 'Papas Fritas', 'icono': 'fa-utensils'},
     {'nombre': 'Gohan', 'icono': 'fa-utensils'},
     {'nombre': 'Handroll', 'icono': 'fa-utensils'},
     {'nombre': 'Vegano', 'icono': 'fa-solid fa-seedling'},
@@ -32,7 +31,7 @@ ICONOS_CATEGORIAS = [
     {'nombre': 'Lasaña', 'icono': 'fa-solid fa-layer-group'},
     {'nombre': 'Ravioli', 'icono': 'fa-utensils'},
     {'nombre': 'Colacion', 'icono': 'fa-solid fa-utensil-spoon'},
-    {'nombre': 'Sopaipilla', 'icono': 'fa-solid fa-cookie'}
+    {'nombre': 'Sopaipillas', 'icono': 'fa-solid fa-cookie'}
 ]
 
 # Modelo de base de datos para los restaurantes

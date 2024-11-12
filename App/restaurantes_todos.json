@@ -56,7 +56,7 @@
         "direccion": "Gorbea 1785",
         "latitud": -33.4515746830334,
         "longitud": -70.6597946490885,
-        "categoria": "Completos, Empanadas, Hamburguesas, Pizzas, Vegana, Sandwiches, Fajitas, Churrasco, Ensaladas, Cafe",
+        "categoria": "Completos, Empanadas, Hamburguesas, Pizza, Vegano, Sandwiches, Fajitas, Churrasco, Ensaladas, Cafe",
         "imagenes": [
             {
                 "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941396/n48ohcucddzuipihpatf.jpg|https://res.cloudinary.com/dycayfdrp/image/upload/v1730941397/luby16shzxolcyotuusz.jpg|https://res.cloudinary.com/dycayfdrp/image/upload/v1730941395/vnyd4hwgfeahi6yqbjkx.jpg"
@@ -72,7 +72,7 @@
         "direccion": "Gorbea 1793",
         "latitud": -33.4516371411874,
         "longitud": -70.6600423527914,
-        "categoria": "Completos, Papas Fritas, Vegana",
+        "categoria": "Completos, Papas Fritas, Vegano",
         "imagenes": [
             {
                 "imagen_url": "https://res.cloudinary.com/dycayfdrp/image/upload/v1730941398/vyxnysmxf86xbmsehjyu.jpg"
@@ -584,7 +584,7 @@
         "direccion": "Vergara 134",
         "latitud": -33.44892165822269,
         "longitud": -70.66211163274303,
-        "categoria": "Pizza, Lasaña, Sandwiches, Cafe, Desayuno, Ensalada, Vegano",
+        "categoria": "Pizza, Lasaña, Sandwiches, Cafe, Desayuno, Ensaladas, Vegano",
         "imagenes": [
             {
                 "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731022376/rikapasta1_mddik3.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731022377/rikapasta2_zxsdsl.jpg"
@@ -664,7 +664,7 @@
         "direccion": "Vergara 41",
         "latitud": -33.44747879276668,
         "longitud": -70.66244708856375,
-        "categoria": "Colacion, Hamburguesa",
+        "categoria": "Colacion, Hamburguesas",
         "imagenes": [
             {
                 "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023235/miskiwasi_ofipco.jpg"
@@ -680,7 +680,7 @@
         "direccion": "Vergara 53",
         "latitud": -33.44770883709418,
         "longitud": -70.662640632743,
-        "categoria": "Hamburguesa, Churrasco, Completos, Papas Fritas",
+        "categoria": "Hamburguesas, Churrasco, Completos, Papas Fritas",
         "imagenes": [
             {
                 "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023386/superpleto1_pxbqs0.jpg|https://res.cloudinary.com/dnersxsnj/image/upload/v1731023387/superpleto2_xwmsss.jpg"
@@ -696,7 +696,7 @@
         "direccion": "Vergara 132",
         "latitud": -33.448818398634835,
         "longitud": -70.66210193274296,
-        "categoria": "Colacion, Empanadas, Papas Fritas, Pizzas",
+        "categoria": "Colacion, Empanadas, Papas Fritas, Pizza",
         "imagenes": [
             {
                 "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023488/nnvergara_pnpnon.jpg"
@@ -728,7 +728,7 @@
         "direccion": "Jose Miguel Carrera 312",
         "latitud": -33.45121648539055,
         "longitud": -70.66310317692208,
-        "categoria": "Completos, Papas Fritas, Vegana, Colacion",
+        "categoria": "Completos, Papas Fritas, Vegano, Colacion",
         "imagenes": [
             {
                 "imagen_url": "https://res.cloudinary.com/dnersxsnj/image/upload/v1731023673/jsm_go7jik.jpg"
