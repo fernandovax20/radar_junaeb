@@ -94,8 +94,9 @@ with app.app_context():
                 for url in urls:
                     menu = Menu(imagen_url=url.strip(), restorant_id=restaurador.id)
                     db.session.add(menu)
-        
         db.session.commit()
+
+
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5050, debug=True)
