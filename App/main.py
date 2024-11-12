@@ -56,8 +56,6 @@ class Menu(db.Model):
 
 @app.route('/')
 def index():
-
-    
     # Consultar todos los restaurantes en la base de datos
     restorants = Restorant.query.all()
 
@@ -94,6 +92,12 @@ with app.app_context():
                 for url in urls:
                     menu = Menu(imagen_url=url.strip(), restorant_id=restaurador.id)
                     db.session.add(menu)
+<<<<<<< HEAD
+=======
+        
+
+
+>>>>>>> diego
         db.session.commit()
 
 
