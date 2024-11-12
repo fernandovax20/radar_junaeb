@@ -33,26 +33,14 @@
                     style="font-size: 24px; padding: 10px; border: 2px solid #000; border-radius: 50%; display: inline-block; width: 50px; height: 50px; line-height: 30px;"></i>
                 <div>Ver<br>Todos</div>
             </div>
-            <div class="category text-center" style="min-width: 80px;">
-                <i class="fas fa-home"
-                    style="font-size: 24px; padding: 10px; border: 2px solid #000; border-radius: 50%; display: inline-block; width: 50px; height: 50px; line-height: 30px;"></i>
-                <div>Comida<br>Casera</div>
-            </div>
-            <div class="category text-center" style="min-width: 80px;">
-                <i class="fas fa-bread-slice"
-                    style="font-size: 24px; padding: 10px; border: 2px solid #000; border-radius: 50%; display: inline-block; width: 50px; height: 50px; line-height: 30px;"></i>
-                <div>Sándwiches</div>
-            </div>
-            <div class="category text-center" style="min-width: 80px;">
-                <i class="fas fa-pizza-slice"
-                    style="font-size: 24px; padding: 10px; border: 2px solid #000; border-radius: 50%; display: inline-block; width: 50px; height: 50px; line-height: 30px;"></i>
-                <div>Pizza</div>
-            </div>
-            <div class="category text-center" style="min-width: 80px;">
-                <i class="fas fa-fish"
-                    style="font-size: 24px; padding: 10px; border: 2px solid #000; border-radius: 50%; display: inline-block; width: 50px; height: 50px; line-height: 30px;"></i>
-                <div>Sushi</div>
-            </div>
+
+            {% for ico in iconos %}
+                <div class="category text-center" style="min-width: 80px;">
+                    <i class="fas {{ico.icono}}"
+                        style="font-size: 24px; padding: 10px; border: 2px solid #000; border-radius: 50%; display: inline-block; width: 50px; height: 50px; line-height: 30px;"></i>
+                    <div>{{ico.nombre}}</div>
+                </div>
+            {% endfor %}
         </div>
         <h6 class="mt-4 mb-2">Locales más cercanos a ti:</h6>
         <div class="places" style="max-height: 60vh; overflow-y: auto;">
@@ -81,6 +69,29 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    
+    function obtenerUbicacion() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+                console.log("Latitud: " + lat + ", Longitud: " + lon);
+            }, function(error) {
+                console.error("Error al obtener la ubicación: " + error.message);
+            }, {
+                maximumAge: 0, // No cache
+                timeout: 10000 // 10 seconds timeout
+            });
+        } else {
+            console.error("La geolocalización no es soportada por este navegador.");
+        }
+    }
+    
+    setInterval(obtenerUbicacion, 20000); // Ejecutar cada 10 segundos
+</script>
+
 </body>
 
 </html>

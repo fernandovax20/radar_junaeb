@@ -9,6 +9,32 @@ app.config['SECRET_KEY'] = 'mi_secreto_super_secreto'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 db = SQLAlchemy(app)
 
+
+ICONOS_CATEGORIAS = [
+    {'nombre': 'Sandwiche', 'icono': 'fa-solid fa-burger'},
+    {'nombre': 'Desayuno', 'icono': 'fa-solid fa-coffee'},
+    {'nombre': 'Cafe', 'icono': 'fa-solid fa-mug-hot'},
+    {'nombre': 'Dulce', 'icono': 'fa-solid fa-candy-cane'},
+    {'nombre': 'Completo', 'icono': 'fa-solid fa-hotdog'},
+    {'nombre': 'Empanada', 'icono': 'fa-solid fa-pastafarianism'},
+    {'nombre': 'Hamburguesa', 'icono': 'fa-solid fa-hamburger'},
+    {'nombre': 'Pizza', 'icono': 'fa-solid fa-pizza-slice'},
+    {'nombre': 'Vegana', 'icono': 'fa-solid fa-carrot'},
+    {'nombre': 'Fajita', 'icono': 'fa-utensils'},
+    {'nombre': 'Churrasco', 'icono': 'fa-solid fa-drumstick-bite'},
+    {'nombre': 'Ensalada', 'icono': 'fa-solid fa-leaf'},
+    {'nombre': 'Papas Frita', 'icono': 'fa-utensils'},
+    {'nombre': 'Gohan', 'icono': 'fa-utensils'},
+    {'nombre': 'Handroll', 'icono': 'fa-utensils'},
+    {'nombre': 'Vegano', 'icono': 'fa-solid fa-seedling'},
+    {'nombre': 'Sushi', 'icono': 'fa-solid fa-fish'},
+    {'nombre': 'General', 'icono': 'fa-solid fa-utensils'},
+    {'nombre': 'Lasaña', 'icono': 'fa-solid fa-layer-group'},
+    {'nombre': 'Ravioli', 'icono': 'fa-utensils'},
+    {'nombre': 'Colacion', 'icono': 'fa-solid fa-utensil-spoon'},
+    {'nombre': 'Sopaipilla', 'icono': 'fa-solid fa-cookie'}
+]
+
 # Modelo de base de datos para los restaurantes
 class Restorant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -32,8 +58,8 @@ class Menu(db.Model):
 def index():
     # Consultar todos los restaurantes en la base de datos
     restorants = Restorant.query.all()
-    print(restorants[1].nombre)
-    return render_template('index.html', restorants=restorants)
+
+    return render_template('index.html', restorants=restorants, iconos = ICONOS_CATEGORIAS)
 
 with app.app_context():
     # Crear las tablas de la base de datos
