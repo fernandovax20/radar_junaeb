@@ -9,7 +9,7 @@ app.config['SECRET_KEY'] = 'mi_secreto_super_secreto'
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 db = SQLAlchemy(app)
 
-
+#Constantes para los iconos de las categorias
 ICONOS_CATEGORIAS = [
     {'nombre': 'Sandwiche', 'icono': 'fa-solid fa-burger'},
     {'nombre': 'Desayuno', 'icono': 'fa-solid fa-coffee'},
@@ -54,6 +54,7 @@ class Menu(db.Model):
     imagen_url = db.Column(db.String(255), nullable=False)
     restorant_id = db.Column(db.Integer, db.ForeignKey('restorant.id'), nullable=False)
 
+# Ruta principal de la aplicación
 @app.route('/')
 def index():
     # Consultar todos los restaurantes en la base de datos
@@ -61,6 +62,7 @@ def index():
 
     return render_template('index.html', restorants=restorants, iconos = ICONOS_CATEGORIAS)
 
+# Inicializar la base de datos
 with app.app_context():
     # Crear las tablas de la base de datos
     db.create_all()
@@ -98,6 +100,6 @@ with app.app_context():
         db.session.commit()
 
 
-
+# Iniciar la aplicación
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5050, debug=True)
