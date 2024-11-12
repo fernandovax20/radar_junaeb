@@ -56,8 +56,6 @@ class Menu(db.Model):
 
 @app.route('/')
 def index():
-
-    
     # Consultar todos los restaurantes en la base de datos
     restorants = Restorant.query.all()
 
