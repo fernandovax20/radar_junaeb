@@ -93,6 +93,8 @@ with app.app_context():
                     menu = Menu(imagen_url=url.strip(), restorant_id=restaurador.id)
                     db.session.add(menu)
         
+
+        
         db.session.commit()
 
 if __name__ == '__main__':
