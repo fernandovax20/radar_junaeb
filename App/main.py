@@ -87,6 +87,8 @@ with app.app_context():
             db.session.add(restaurador)
             db.session.commit()
 
+            # Cosa
+
             # Agregar múltiples imágenes para cada restaurante
             for imagen in dato["imagenes"]:
                 # Dividir las URLs usando el delimitador "|"
