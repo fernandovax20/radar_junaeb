@@ -61,6 +61,15 @@ def index():
 
     return render_template('index.html', restorants=restorants, iconos = ICONOS_CATEGORIAS)
 
+@app.route('/restaurant/<id>')
+def restautantById(id):
+    restaurante = Restorant.query.options(db.joinedload(Restorant.imagenes)).filter_by(id=id).first()
+    
+    if restaurante:
+        return render_template('restaurants.html', restaurante=restaurante)
+    else:
+        return "Restaurante no encontrado", 404
+
 # Inicializar la base de datos
 with app.app_context():
     # Crear las tablas de la base de datos

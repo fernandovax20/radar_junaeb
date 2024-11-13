@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles del Restaurante</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <style>
+        /* Establecer un tamaño fijo para las imágenes del carrusel */
+        .carousel-item img {
+            max-height: 500px; /* Ajusta la altura según tus necesidades */
+            object-fit: cover; /* Hace que la imagen se adapte al contenedor sin distorsionarse */
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detalles del Restaurante</h1>
+        <h2>{{ restaurante.nombre }}</h2>
+        <p>Dirección: {{ restaurante.direccion }}</p>
+        <p>Horario Semana: {{ restaurante.horario_semana }}</p>
+        <p>Horario Sábado: {{ restaurante.horario_sabado }}</p>
+        <p>Horario Domingo: {{ restaurante.horario_domingo }}</p>
+        <p>Horario Festivos: {{ restaurante.horario_festivos }}</p>
+        
+        <p>Categoría: 
+            {% for icono in iconos %}
+                {% if icono.nombre == restaurante.categoria %}
+                    <i class="{{ icono.icono }}"></i> {{ restaurante.categoria }}
+                {% endif %}
+            {% endfor %}
+        </p>
+
+        <!-- Carrusel de imágenes con Lightbox -->
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {% for imagen in restaurante.imagenes %}
+                <div class="carousel-item {% if loop.first %}active{% endif %}">
+                    <a href="{{ imagen.imagen_url }}" class="glightbox" data-gallery="gallery1">
+                        <img src="{{ imagen.imagen_url }}" class="d-block" alt="Imagen del restaurante">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+    <script>
+        // Inicializar GLightbox
+        const lightbox = GLightbox({
+            selector: '.glightbox'
+        });
+    </script>
+</body>
+</html>
