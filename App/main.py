@@ -66,7 +66,7 @@ def restautantById(id):
     restaurante = Restorant.query.options(db.joinedload(Restorant.imagenes)).filter_by(id=id).first()
     
     if restaurante:
-        return render_template('restaurants.html', restaurante=restaurante)
+        return render_template('restaurants.html', restaurante=restaurante, iconos = ICONOS_CATEGORIAS)
     else:
         return "Restaurante no encontrado", 404
 
