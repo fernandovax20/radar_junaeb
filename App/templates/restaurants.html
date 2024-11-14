@@ -15,16 +15,30 @@
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>Detalles del Restaurante</h1>
-        <h2>{{ restaurante.nombre }}</h2>
-        <p>Dirección: {{ restaurante.direccion }}</p>
-        <p>Horario Semana: {{ restaurante.horario_semana }}</p>
-        <p>Horario Sábado: {{ restaurante.horario_sabado }}</p>
-        <p>Horario Domingo: {{ restaurante.horario_domingo }}</p>
-        <p>Horario Festivos: {{ restaurante.horario_festivos }}</p>
-        
+<body style="font-family: Arial, sans-serif; background-color: #f8f8f8;">
+    <div class="container my-3">
+        <div class="header d-flex align-items-center justify-content-center gap-2"
+            style="font-family: 'Open Sans', sans-serif; font-size: 36px; font-weight: 500; margin-top: 5px;">
+            <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar"
+                style="width: 40px; height: auto;">
+            <span>Radar Junaeb</span>
+
+        </div>
+        <div class="place d-flex justify-content-between align-items-center border-bottom py-3">
+            <div>
+                <div class="name" style="font-size: 20px; font-weight: bold;">{{ restaurante.nombre }}</div>
+
+                <div class="description" style="font-size: 14px; color: #666;">
+                    {{ restaurante.direccion }}
+                </div>
+            </div>
+            <div class="distance text-muted d-flex align-items-center" style="font-size: 14px;">
+                <i class="fas fa-clock"></i> <br>Horario Semana: {{ restaurante.horario_semana }}</br>
+                <br>Horario Sábado: {{ restaurante.horario_sabado }}</br>
+                <br>Horario Domingo: {{ restaurante.horario_domingo }}</br>
+                <br>Horario Festivos: {{ restaurante.horario_festivos }}</br>
+            </div>
+        </div>
         <p>Categoría: 
             {% for icono in iconos %}
                 {% if icono.nombre == restaurante.categoria %}
