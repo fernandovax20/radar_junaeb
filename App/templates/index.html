@@ -23,7 +23,7 @@
         <div class="search-bar position-relative mt-3">
             <i class="fas fa-search position-absolute"
                 style="top: 50%; left: 10px; transform: translateY(-50%); color: #888;"></i>
-            <input type="text" class="form-control" placeholder="Buscar locales y platos"
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar locales y platos"
                 style="width: 100%; padding-left: 35px; border-radius: 25px; border: 1px solid #ddd;">
         </div>
         <div class="categories d-flex mt-3 pb-3"
@@ -43,7 +43,7 @@
             {% endfor %}
         </div>
         <h6 class="mt-4 mb-2">Locales más cercanos a ti:</h6>
-        <div class="places" style="max-height: 60vh; overflow-y: auto;">
+        <div class="places" id="resto"style="max-height: 60vh; overflow-y: auto;">
             {% for restorant in restorants|sort(attribute='nombre') %}
             <a href="/restaurant/{{ restorant.id }}" style="text-decoration: none; color: black;">
                 <div class="place d-flex justify-content-between align-items-center border-bottom py-3">
@@ -71,7 +71,15 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <style>
+        .hidden {
+            visibility: hidden; /* Hace el elemento invisible */
+            height: 0; /* Elimina el espacio ocupado */
+            overflow: hidden; /* Evita el desbordamiento */
+            transition: visibility 0s 0.3s, height 0.3s ease; /* Suaviza la transición */
+        }
+    </style>
+   
 <script>
     
     function obtenerUbicacion() {
@@ -92,6 +100,23 @@
     }
     
     setInterval(obtenerUbicacion, 20000); // Ejecutar cada 10 segundos
+
+    document.getElementById('searchInput').addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+        const places = document.querySelectorAll('.place');
+
+        places.forEach(place => {
+            const name = place.querySelector('.name').textContent.toLowerCase();
+            const description = place.querySelector('.description').textContent.toLowerCase();
+            
+            if (name.includes(searchTerm) || description.includes(searchTerm)) {
+                // Si el lugar coincide con el término de búsqueda, lo hacemos visible
+                place.classList.remove('hidden');
+            } else {
+                place.classList.add('hidden');
+            }
+        });
+    });
 </script>
 
 </body>
