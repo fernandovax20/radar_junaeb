@@ -78,6 +78,7 @@
         function actualizarDistancias() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
+                    //!Todo: Cambiar por la ubicación del usuario a real y por tiempo
                     var lat = -33.4524759064743;
                     var lon = -70.66019643696536;
 
@@ -113,52 +114,6 @@
         // Ejecutar al cargar la página y luego cada 20 segundos
         actualizarDistancias();
         setInterval(actualizarDistancias, 20000); // Actualizar cada 20 segundos
-        
-        /*
-        // Almacena coordenadas del usuario
-        let userLat, userLon;
-
-        // Función para obtener la ubicación del usuario
-        function obtenerUbicacion() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    userLat = -33.452511712602224;
-                    userLon = -70.66047538672474;
-                    console.log("Latitud: " + userLat + ", Longitud: " + userLon);
-                    actualizarDistancias();
-                }, function (error) {
-                    console.error("Error al obtener la ubicación: " + error.message);
-                });
-            } else {
-                console.error("La geolocalización no es soportada por este navegador.");
-            }
-        }
-
-        // Función para calcular la distancia usando la fórmula de Haversine
-        function calcularDistancia(lat1, lon1, lat2, lon2) {
-            const R = 6371; // Radio de la Tierra en km
-            const dLat = (lat2 - lat1) * Math.PI / 180;
-            const dLon = (lon2 - lon1) * Math.PI / 180;
-            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            return R * c; // Retorna la distancia en km
-        }
-
-        // Actualizar distancias de los restaurantes
-        function actualizarDistancias() {
-            let distancia = 0
-            {% for restorant in restorants %}
-            distancia = calcularDistancia(userLat, userLon, {{ restorant.latitud }}, { { restorant.longitud } });
-        document.getElementById("distance-{{ loop.index }}").innerText = `${distancia.toFixed(1)} km`;
-        {% endfor %}
-    }
-
-        // Llama a obtenerUbicacion periódicamente
-        setInterval(obtenerUbicacion, 20000); // Cada 20 segundos
-        obtenerUbicacion(); // Llamada inicial
-        */
 
     </script>
 
