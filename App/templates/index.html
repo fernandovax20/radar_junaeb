@@ -9,7 +9,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
-    
+
 </head>
 
 <body style="font-family: Arial, sans-serif; background-color: #f8f8f8;">
@@ -44,41 +44,87 @@
             {% endfor %}
         </div>
         <h6 class="mt-4 mb-2">Locales más cercanos a ti:</h6>
-        <div class="places" id="resto"style="max-height: 60vh; overflow-y: auto;">
+        <div class="places-wrapper" id="places-wrapper" style="max-height: 60vh; overflow-y: auto;">
             {% for restorant in restorants|sort(attribute='nombre') %}
-            <a href="/restaurant/{{ restorant.id }}" style="text-decoration: none; color: black;">
-                <div class="place d-flex justify-content-between align-items-center border-bottom py-3"
-                    id="restorant-{{ restorant.id }}">
-                    <div>
-                        <div class="name" style="font-size: 20px; font-weight: bold;">{{ restorant.nombre }}</div>
-                        <div class="description" style="font-size: 14px; color: #666;">
-                            {% set categorias = restorant.categoria.split(',') %}
-                            {% if categorias | length > 3 %}
-                            {{ categorias[:3] | join(', ') }} más
-                            {% else %}
-                            {{ restorant.categoria }}
-                            {% endif %}
+            <div class="place-item" style="text-decoration: none; color: black;">
+                <a href="/restaurant/{{ restorant.id }}" class="place-link">
+                    <div class="place d-flex justify-content-between align-items-center border-bottom py-3"
+                        id="restorant-{{ restorant.id }}">
+                        <div>
+                            <div class="name" style="font-size: 20px; font-weight: bold;">{{ restorant.nombre }}</div>
+                            <div class="description" style="font-size: 14px; color: #666;">
+                                {% set categorias = restorant.categoria.split(',') %}
+                                {% if categorias | length > 3 %}
+                                {{ categorias[:3] | join(', ') }} más
+                                {% else %}
+                                {{ restorant.categoria }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="distance text-muted d-flex align-items-center" id="distance-{{ restorant.id }}"
+                            style="font-size: 14px;">
+                            <i class="fas fa-walking mr-1"></i> Calculando...
                         </div>
                     </div>
-                    <div class="distance text-muted d-flex align-items-center" id="distance-{{ restorant.id }}"
-                        style="font-size: 14px;">
-                        <i class="fas fa-walking mr-1"></i> Calculando...
-                    </div>
-                </div>
-            </a>
+                </a>
+            </div>
             {% endfor %}
         </div>
+
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        /* Estilo para enlaces en la sección de categorías y locales */
+        .category-link,
+        .place-link {
+            text-decoration: none;
+            color: black;
+        }
 
+        /* Anulación del color de enlace en la categoría y en la lista de locales */
+        .category-link:hover,
+        .place-link:hover {
+            color: black;
+            /* Evitar cambio de color en hover */
+            text-decoration: none;
+            /* Evitar subrayado en hover */
+        }
+    </style>
     <script>
+        // Función para eliminar acentos y caracteres diacríticos
+        function normalize(text) {
+            return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        // Función para filtrar locales por nombre
+        $('#searchInput').on('input', function () {
+            const filter = normalize($(this).val().toLowerCase());
+
+            // Filtrar los locales por nombre o categoría
+            $('.place-item').each(function () {
+                const name = normalize($(this).find('.name').text().toLowerCase());
+                const categories = normalize($(this).find('.description').text().toLowerCase());
+
+                // Mostrar si el filtro coincide con el nombre o la categoría
+                $(this).toggle(name.includes(filter) || categories.includes(filter));
+            });
+
+            // Filtrar las categorías mostradas en la barra de categorías
+            $('.category').each(function () {
+                const categoryName = normalize($(this).find('div').text().toLowerCase());
+
+                // Mostrar solo las categorías que coinciden con el filtro
+                $(this).toggle(categoryName.includes(filter));
+            });
+        });
+
         function actualizarDistancias() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    //!Todo: Cambiar por la ubicación del usuario a real y por tiempo
+                    // Mantener la latitud y longitud especificadas
                     var lat = -33.4524759064743;
                     var lon = -70.66019643696536;
 
@@ -89,12 +135,19 @@
                         contentType: 'application/json',
                         data: JSON.stringify({ lat: lat, lon: lon }),
                         success: function (response) {
-                            response.distancias.forEach(function (item) {
+                            const distances = response.distancias;
+
+                            // Actualizar cada elemento en el DOM con su distancia y almacenar las distancias
+                            distances.forEach(function (item) {
                                 const distanciaElement = document.getElementById(`distance-${item.id}`);
                                 if (distanciaElement) {
                                     distanciaElement.innerHTML = `<i class="fas fa-walking mr-1"></i> ${item.distancia_km} km <br> (${item.cuadras} cuadras)`;
+                                    $(`#restorant-${item.id}`).closest('.place-item').data('distance', item.distancia_km); // Almacenar distancia
                                 }
                             });
+
+                            // Ordenar los elementos en función de la distancia
+                            ordenarPorDistancia();
                         },
                         error: function (error) {
                             console.error("Error al calcular distancias:", error);
@@ -109,6 +162,20 @@
             } else {
                 console.error("La geolocalización no es soportada por este navegador.");
             }
+        }
+
+        // Función para ordenar los elementos en el DOM por distancia
+        function ordenarPorDistancia() {
+            const $placesWrapper = $('#places-wrapper');
+            const $placeItems = $placesWrapper.children('.place-item');
+
+            // Ordenar los elementos por la data de distancia
+            $placeItems.sort(function (a, b) {
+                return $(a).data('distance') - $(b).data('distance');
+            });
+
+            // Reinsertar los elementos en orden
+            $placesWrapper.append($placeItems);
         }
 
         // Ejecutar al cargar la página y luego cada 20 segundos
