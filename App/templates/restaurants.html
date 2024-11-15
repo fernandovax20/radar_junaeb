@@ -18,7 +18,18 @@
         .line-height-adjust {
             margin-bottom: 4px;
         }
+
+        #map {
+            width: 100%;
+            height: 400px;
+            margin-top: 15px;
+        }
     </style>
+
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
 </head>
 <body style="font-family: Arial, sans-serif; background-color: #f8f8f8;">
     <div class="container my-3">
@@ -32,6 +43,9 @@
             <span  style="font-size: 36px;">Radar Junaeb</span>
 
         </div>
+
+    <!-- Contenedor del Mapa -->
+    <div id="map"></div>
         <div class="restaurant" style="max-height: 90vh; overflow-y: auto;">
             <div class="place d-flex justify-content-between align-items-center border-bottom py-3">
                 <div>
@@ -95,11 +109,39 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
     <script>
+
+        const latitud = {{restaurante.latitud}};
+        const longitud = {{ restaurante.longitud }};   
+
+        console.log('Latitud:', latitud, 'Longitud:', longitud);
+
+        // Inicializar el mapa centrado en la ubicación del restaurante
+        var map = L.map('map').setView([latitud, longitud], 19);
+
+        // Añadir la capa de OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Agregar un marcador en la ubicación del restaurante
+        L.marker([latitud, longitud]).addTo(map)
+            .bindPopup('<b>{{ restaurante.nombre }}</b><br>{{ restaurante.direccion}}')
+            .openPopup();
+
+
         // Inicializar GLightbox
         const lightbox = GLightbox({
             selector: '.glightbox'
         });
     </script>
+
+
+    
+
 </body>
 </html>
