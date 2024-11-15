@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, request, jsonify, render_template
+from geopy.distance import geodesic
 from flask_sqlalchemy import SQLAlchemy
 import json
 
@@ -69,6 +70,34 @@ def restautantById(id):
         return render_template('restaurants.html', restaurante=restaurante, iconos = ICONOS_CATEGORIAS)
     else:
         return "Restaurante no encontrado", 404
+
+@app.route('/calcular_distancias', methods=['POST'])
+def calcular_distancias():
+    # Obtener la ubicación del cliente desde el request
+    data = request.get_json()
+    lat_cliente = data['lat']
+    lon_cliente = data['lon']
+    
+    # Consultar todos los restaurantes
+    restorants = Restorant.query.all()
+    distancias = []
+
+    for restorant in restorants:
+        # Calcular distancia en km entre cliente y restaurante
+        distancia_km = geodesic((lat_cliente, lon_cliente), (restorant.latitud, restorant.longitud)).km
+        # Limitar la distancia a 0.1 km mínimo y 99 km máximo
+        distancia_km = max(0.1, min(distancia_km, 99))
+
+        # Convertir distancia en cuadras (aproximadamente 1 cuadra = 0.1 km)
+        cuadras = int(distancia_km / 0.1)
+
+        distancias.append({
+            'id': restorant.id,
+            'distancia_km': round(distancia_km, 1),  # Redondear a 1 decimal
+            'cuadras': cuadras
+        })
+
+    return jsonify(distancias=distancias)
 
 # Inicializar la base de datos
 with app.app_context():
