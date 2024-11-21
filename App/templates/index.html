@@ -10,59 +10,193 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
 
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f8f8f8;
+        }
+
+        .header {
+            font-size: 48px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 30px;
+            color: transparent;
+            background: linear-gradient(90deg, #d2232a, #d2232a);
+            background-clip: text;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding-left: 35px;
+            border-radius: 25px;
+            border: 2px solid #d2232a;
+            font-size: 16px;
+        }
+
+        .search-bar i {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: #d2232a;
+        }
+
+        .categories {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+        }
+
+        .categories::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .categories::-webkit-scrollbar-thumb {
+            background-color: #ec4449;
+            border-radius: 4px;
+        }
+
+        .categories::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        .category {
+            text-align: center;
+            background-color: #f35459;
+            border-radius: 15px;
+            padding: 10px;
+            min-width: 120px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .category.selected {
+            background-color: #d2232a;
+        }
+
+        .category i {
+            font-size: 28px;
+            color: white;
+        }
+
+        .category div {
+            font-size: 14px;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .place-item {
+            text-decoration: none;
+            color: black;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .place-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .place-item .place {
+            background-color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .place-item .place .name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .place-item .place .description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .place-item .place .distance {
+            font-size: 14px;
+            color: #d2232a;
+            font-weight: bold;
+        }
+
+        .category-link,
+        .place-link {
+            text-decoration: none;
+            color: black;
+        }
+
+        .category-link:hover,
+        .place-link:hover {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
-<body style="font-family: Arial, sans-serif; background-color: #f8f8f8;">
+<body>
     <div class="container my-3">
-        <div class="header d-flex align-items-center justify-content-center gap-2"
-            style="font-family: 'Open Sans', sans-serif; font-size: 36px; font-weight: 500; margin-top: 5px;">
-            <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar"
-                style="width: 40px; height: auto;">
-            <span>Radar Junaeb</span>
+        <div class="header d-flex align-items-center justify-content-center gap-2">
+            <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar" style="width: 50px; height: auto; margin-right: 10px;">
+            <span class="title">Radar Junaeb</span>
+        </div>
 
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar locales y platos">
         </div>
-        <div class="search-bar position-relative mt-3">
-            <i class="fas fa-search position-absolute"
-                style="top: 50%; left: 10px; transform: translateY(-50%); color: #888;"></i>
-            <input type="text" id="searchInput" class="form-control" placeholder="Buscar locales y platos"
-                style="width: 100%; padding-left: 35px; border-radius: 25px; border: 1px solid #ddd;">
-        </div>
-        <div class="categories d-flex mt-3 pb-3"
-            style="white-space: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 15px;">
-            <div class="category text-center" style="min-width: 80px;">
-                <i class="fas fa-utensils"
-                    style="font-size: 24px; padding: 10px; border: 2px solid #000; border-radius: 50%; display: inline-block; width: 50px; height: 50px; line-height: 30px;"></i>
-                <div>Ver<br>Todos</div>
+
+        <div class="categories">
+            <div class="category" id="viewAll">
+                <i class="fas fa-utensils"></i>
+                <div>Ver Todos</div>
             </div>
 
             {% for ico in iconos %}
-            <div class="category text-center" style="min-width: 80px;">
-                <i class="fas {{ico.icono}}"
-                    style="font-size: 24px; padding: 10px; border: 2px solid #000; border-radius: 50%; display: inline-block; width: 50px; height: 50px; line-height: 30px;"></i>
-                <div>{{ico.nombre}}</div>
+            <div class="category" data-category="{{ ico.nombre }}">
+                <i class="fas {{ ico.icono }}"></i>
+                <div>{{ ico.nombre }}</div>
             </div>
             {% endfor %}
         </div>
-        <h6 class="mt-4 mb-2">Locales más cercanos a ti:</h6>
+
+        <h6 class="mt-4 mb-2" style="font-weight: bold; font-size: 18px; color: #d2232a;">Locales más cercanos a ti:</h6>
         <div class="places-wrapper" id="places-wrapper" style="max-height: 60vh; overflow-y: auto;">
             {% for restorant in restorants|sort(attribute='nombre') %}
-            <div class="place-item" style="text-decoration: none; color: black;">
+            <div class="place-item" data-categories="{{ restorant.categoria }}">
                 <a href="/restaurant/{{ restorant.id }}" class="place-link">
-                    <div class="place d-flex justify-content-between align-items-center border-bottom py-3"
-                        id="restorant-{{ restorant.id }}">
+                    <div class="place">
                         <div>
-                            <div class="name" style="font-size: 20px; font-weight: bold;">{{ restorant.nombre }}</div>
-                            <div class="description" style="font-size: 14px; color: #666;">
-                                {% set categorias = restorant.categoria.split(',') %}
-                                {% if categorias | length > 3 %}
-                                {{ categorias[:3] | join(', ') }} más
-                                {% else %}
-                                {{ restorant.categoria }}
-                                {% endif %}
+                            <div>
+                                <div class="name" style="font-size: 20px; font-weight: bold;">{{ restorant.nombre }}</div>
+                                <div class="description" style="font-size: 14px; color: #666;">
+                                    {% set categorias = restorant.categoria.split(',') %}
+                                    {% if categorias | length > 3 %}
+                                    {{ categorias[:3] | join(', ') }}, más
+                                    {% else %}
+                                    {{ restorant.categoria }}
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
-                        <div class="distance text-muted d-flex align-items-center" id="distance-{{ restorant.id }}"
-                            style="font-size: 14px;">
+                        <div class="distance" id="distance-{{ restorant.id }}">
                             <i class="fas fa-walking mr-1"></i> Calculando...
                         </div>
                     </div>
@@ -70,65 +204,85 @@
             </div>
             {% endfor %}
         </div>
-
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <style>
-        /* Estilo para enlaces en la sección de categorías y locales */
-        .category-link,
-        .place-link {
-            text-decoration: none;
-            color: black;
-        }
 
-        /* Anulación del color de enlace en la categoría y en la lista de locales */
-        .category-link:hover,
-        .place-link:hover {
-            color: black;
-            /* Evitar cambio de color en hover */
-            text-decoration: none;
-            /* Evitar subrayado en hover */
-        }
-    </style>
     <script>
-        // Función para eliminar acentos y caracteres diacríticos
         function normalize(text) {
             return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         }
 
-        // Función para filtrar locales por nombre
         $('#searchInput').on('input', function () {
             const filter = normalize($(this).val().toLowerCase());
 
-            // Filtrar los locales por nombre o categoría
             $('.place-item').each(function () {
                 const name = normalize($(this).find('.name').text().toLowerCase());
                 const categories = normalize($(this).find('.description').text().toLowerCase());
 
-                // Mostrar si el filtro coincide con el nombre o la categoría
                 $(this).toggle(name.includes(filter) || categories.includes(filter));
             });
+        });
 
-            // Filtrar las categorías mostradas en la barra de categorías
-            $('.category').each(function () {
-                const categoryName = normalize($(this).find('div').text().toLowerCase());
+        $('.category').on('click', function() {
+            if ($(this).attr('id') === 'viewAll') {
+                $('.place-item').show();
+                $('.category').removeClass('selected');
+                return;
+            }
 
-                // Mostrar solo las categorías que coinciden con el filtro
-                $(this).toggle(categoryName.includes(filter));
+            $('.category').removeClass('selected');
+            $(this).addClass('selected');
+
+            const selectedCategory = $(this).data('category').toLowerCase();
+
+            $('.place-item').each(function() {
+                const itemCategories = $(this).data('categories').toLowerCase();
+                if (itemCategories.includes(selectedCategory)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            $('#viewAll').addClass('selected');
+        });
+
+        $('.category').on('click', function() {
+            if ($(this).attr('id') === 'viewAll') {
+                $('.place-item').show();
+                $('.category').removeClass('selected');
+                $(this).addClass('selected');
+
+                return;
+            }
+
+            $('.category').removeClass('selected');
+            $(this).addClass('selected');
+
+            const selectedCategory = $(this).data('category').toLowerCase();
+
+            $('.place-item').each(function() {
+                const itemCategories = $(this).data('categories').toLowerCase();
+                if (itemCategories.includes(selectedCategory)) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
             });
         });
 
         function actualizarDistancias() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
-                    // Mantener la latitud y longitud especificadas
                     var lat = -33.4524759064743;
                     var lon = -70.66019643696536;
 
-                    // Llamada AJAX para calcular distancias en el servidor
                     $.ajax({
                         url: '/calcular_distancias',
                         method: 'POST',
@@ -137,16 +291,14 @@
                         success: function (response) {
                             const distances = response.distancias;
 
-                            // Actualizar cada elemento en el DOM con su distancia y almacenar las distancias
                             distances.forEach(function (item) {
                                 const distanciaElement = document.getElementById(`distance-${item.id}`);
                                 if (distanciaElement) {
                                     distanciaElement.innerHTML = `<i class="fas fa-walking mr-1"></i> ${item.distancia_km} km <br> (${item.cuadras} cuadras)`;
-                                    $(`#restorant-${item.id}`).closest('.place-item').data('distance', item.distancia_km); // Almacenar distancia
+                                    $(`#restorant-${item.id}`).closest('.place-item').data('distance', item.distancia_km);
                                 }
                             });
 
-                            // Ordenar los elementos en función de la distancia
                             ordenarPorDistancia();
                         },
                         error: function (error) {
@@ -156,34 +308,28 @@
                 }, function (error) {
                     console.error("Error al obtener la ubicación:", error.message);
                 }, {
-                    maximumAge: 0, // No cache
-                    timeout: 10000 // 10 seconds timeout
+                    maximumAge: 0,
+                    timeout: 10000
                 });
             } else {
                 console.error("La geolocalización no es soportada por este navegador.");
             }
         }
 
-        // Función para ordenar los elementos en el DOM por distancia
         function ordenarPorDistancia() {
             const $placesWrapper = $('#places-wrapper');
             const $placeItems = $placesWrapper.children('.place-item');
 
-            // Ordenar los elementos por la data de distancia
             $placeItems.sort(function (a, b) {
                 return $(a).data('distance') - $(b).data('distance');
             });
 
-            // Reinsertar los elementos en orden
             $placesWrapper.append($placeItems);
         }
 
-        // Ejecutar al cargar la página y luego cada 20 segundos
         actualizarDistancias();
-        setInterval(actualizarDistancias, 20000); // Actualizar cada 20 segundos
-
+        setInterval(actualizarDistancias, 20000);
     </script>
-
 </body>
 
 </html>
