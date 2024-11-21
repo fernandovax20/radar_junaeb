@@ -54,7 +54,11 @@
 
                     <div class="description" style="font-size: 14px; color: #666;">
                         <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://www.google.com/maps?q={{ restaurante.latitud }},{{ restaurante.longitud }}" 
+                        target="_blank" 
+                        style="text-decoration: none; color: #d2232a;">
                         {{ restaurante.direccion }}
+    </a>
                     </div>
                 </div>
                 
@@ -133,7 +137,15 @@
 
         // Agregar un marcador en la ubicación del restaurante
         L.marker([latitud, longitud]).addTo(map)
-            .bindPopup('<b>{{ restaurante.nombre }}</b><br>{{ restaurante.direccion}}')
+            .bindPopup(`<a href="https://www.google.com/maps?q=${latitud},${longitud}" 
+            target="_blank" 
+            style="text-decoration: none; color: #000000;">{{ restaurante.nombre }}</a><br>
+            
+            <a href="https://www.google.com/maps?q=${latitud},${longitud}" 
+            target="_blank" 
+            style="text-decoration: none; color: #d2232a;">
+            {{ restaurante.direccion }}</a>
+             `)
             .openPopup();
 
 
