@@ -179,6 +179,38 @@
             text-decoration: none;
             /* Eliminar el subrayado al hacer hover */
         }
+
+        .places-wrapper {
+            max-height: 60vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            /* Asegúrate de que no haya desbordamiento horizontal */
+            padding: 10px 0;
+            /* Asegúrate de que haya un pequeño relleno alrededor */
+        }
+
+        .place-item {
+            text-decoration: none;
+            color: black;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            /* Asegúrate de que el ancho de cada ítem esté limitado al 100% */
+        }
+
+        .place-item .place {
+            background-color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            width: 100%;
+            /* Limita el ancho de los elementos dentro de place-item */
+        }
     </style>
 </head>
 

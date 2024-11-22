@@ -38,10 +38,9 @@
         }
 
         .arrow-left {
-            position: fixed;
-            left: 35px;
-            top: 20px;
+            position: relative;
             font-size: 30px;
+            margin-right: 20px;
             color: white;
             background-color: #d2232a;
             width: 45px;
@@ -68,15 +67,16 @@
 <body style="font-family: Arial, sans-serif; background-color: #f8f8f8;">
     <div class="header d-flex align-items-center justify-content-center gap-2"
         style="font-family: 'Open Sans', sans-serif; font-size: 36px; font-weight: 500; margin-top: 15px; margin-bottom: 10px;">
+        <a href="/" class="arrow-left" title="Ir a la página principal">
+            <i class="fas fa-angle-left"></i>
+        </a>
         <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar"
             style="width: 40px; height: auto;">
         <a href="/" class="title" style="color: #d2232a; text-decoration: none;">
             Radar Junaeb
         </a>
         <!-- Añadir el enlace con la flecha -->
-        <a href="/" class="arrow-left" title="Ir a la página principal">
-            <i class="fas fa-angle-left"></i>
-        </a>
+
     </div>
 
     <div class="restaurant" style="max-height: 90vh; overflow-y: auto;">
