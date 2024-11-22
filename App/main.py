@@ -28,9 +28,9 @@ ICONOS_CATEGORIAS = [
     {'nombre': 'Handroll', 'icono': 'fa-utensils'},
     {'nombre': 'Vegano', 'icono': 'fa-solid fa-seedling'},
     {'nombre': 'Sushi', 'icono': 'fa-solid fa-fish'},
-    {'nombre': 'General', 'icono': 'fa-solid fa-utensils'},
+    #{'nombre': 'General', 'icono': 'fa-solid fa-utensils'}, no hay con general
     {'nombre': 'Lasaña', 'icono': 'fa-solid fa-layer-group'},
-    {'nombre': 'Ravioli', 'icono': 'fa-utensils'},
+    #{'nombre': 'Ravioli', 'icono': 'fa-utensils'}, no hay con ravioli
     {'nombre': 'Colacion', 'icono': 'fa-solid fa-utensil-spoon'},
     {'nombre': 'Sopaipillas', 'icono': 'fa-solid fa-cookie'}
 ]

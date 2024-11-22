@@ -13,7 +13,7 @@
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
-            background-color: #f8f8f8;
+            background-color: white;
         }
 
         .header {
@@ -148,21 +148,53 @@
             color: black;
             text-decoration: none;
         }
+
+        .show-more-priority {
+            position: relative;
+            z-index: 10;
+        }
+
+        .show-more {
+            font-size: 16px;
+            /* Reducir el tamaño del texto */
+            color: #d2232a;
+            /* Mantener el color del botón */
+            background: none;
+            /* Quitar el fondo del botón */
+            border: none;
+            /* Eliminar bordes */
+            padding: 0;
+            /* Eliminar relleno alrededor del texto */
+            cursor: pointer;
+            /* Cambiar a cursor de mano */
+            margin-bottom: 3px;
+            /* Añadir un pequeño margen arriba */
+            display: inline;
+            /* Mantener en línea con el texto */
+            text-decoration: underline;
+            /* Añadir subrayado para hacerlo parecer un enlace */
+        }
+
+        .show-more:hover {
+            text-decoration: none;
+            /* Eliminar el subrayado al hacer hover */
+        }
     </style>
 </head>
 
-<body>
+<body style="font-family: Arial, sans-serif; background-color: #f8f8f8;">
     <div class="container my-3">
-        <div class="header d-flex align-items-center justify-content-center gap-2">
-            <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar" style="width: 50px; height: auto; margin-right: 10px;">
-            <span class="title">Radar Junaeb</span>
-        </div>
+        <div class="header d-flex align-items-center justify-content-center gap-2"
+            style="font-family: 'Open Sans', sans-serif; font-size: 36px; font-weight: 500; margin-top: 5px;">
+            <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar"
+                style="width: 40px; height: auto;">
+            <span>Radar Junaeb</span>
 
+        </div>
         <div class="search-bar">
             <i class="fas fa-search"></i>
             <input type="text" id="searchInput" class="form-control" placeholder="Buscar locales y platos">
         </div>
-
         <div class="categories">
             <div class="category" id="viewAll">
                 <i class="fas fa-utensils"></i>
@@ -176,89 +208,79 @@
             </div>
             {% endfor %}
         </div>
-
-        <h6 class="mt-4 mb-2" style="font-weight: bold; font-size: 18px; color: #d2232a;">Locales más cercanos a ti:</h6>
+        <h6 class="mt-4 mb-2" style="font-weight: bold; font-size: 18px; color: #d2232a;">Locales más cercanos a ti:
+        </h6>
         <div class="places-wrapper" id="places-wrapper" style="max-height: 60vh; overflow-y: auto;">
             {% for restorant in restorants|sort(attribute='nombre') %}
             <div class="place-item" data-categories="{{ restorant.categoria }}">
                 <a href="/restaurant/{{ restorant.id }}" class="place-link">
-                    <div class="place">
+                    <div class="place" id="restorant-{{ restorant.id }}">
                         <div>
-                            <div>
-                                <div class="name" style="font-size: 20px; font-weight: bold;">{{ restorant.nombre }}</div>
-                                <div class="description" style="font-size: 14px; color: #666;">
-                                    {% set categorias = restorant.categoria.split(',') %}
-                                    {% if categorias | length > 3 %}
-                                    {{ categorias[:3] | join(', ') }}, más
-                                    {% else %}
-                                    {{ restorant.categoria }}
-                                    {% endif %}
+                            <div class="name">{{ restorant.nombre }}</div>
+                            <div class="description">
+                                {% set categorias = restorant.categoria.split(',') %}
+
+                                <!-- Mostrar las primeras tres categorías -->
+                                {{ categorias[:3] | join(', ') }}
+
+                                {% if categorias | length > 3 %}
+                                <!-- Coma antes del botón 'más', pero fuera de él -->
+                                ,
+                                <!-- Botón "más" para mostrar las categorías restantes -->
+                                <button class="btn btn-link show-more" data-id="{{ restorant.id }}"
+                                    style="color: #d2232a">más</button>
+
+                                <!-- Categorías adicionales ocultas -->
+                                <div class="additional-categories" id="more-categories-{{ restorant.id }}"
+                                    style="display: none;">
+                                    {{ categorias[3:] | join(', ') }}
                                 </div>
+                                {% endif %}
                             </div>
                         </div>
-                        <div class="distance" id="distance-{{ restorant.id }}">
+                        <div class="distance text-muted d-flex align-items-center" id="distance-{{ restorant.id }}"
+                            style="font-size: 14px;">
                             <i class="fas fa-walking mr-1"></i> Calculando...
                         </div>
                     </div>
                 </a>
             </div>
             {% endfor %}
-        </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        </div>
+
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
     <script>
+        ordenarPorDistancia();
+
+        // Función para eliminar acentos y caracteres diacríticos
         function normalize(text) {
             return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         }
 
+        // Función para filtrar locales por nombre
         $('#searchInput').on('input', function () {
             const filter = normalize($(this).val().toLowerCase());
 
+            // Filtrar los locales por nombre o categoría
             $('.place-item').each(function () {
                 const name = normalize($(this).find('.name').text().toLowerCase());
                 const categories = normalize($(this).find('.description').text().toLowerCase());
 
+                // Mostrar si el filtro coincide con el nombre o la categoría
                 $(this).toggle(name.includes(filter) || categories.includes(filter));
             });
         });
 
-        $('.category').on('click', function() {
-            if ($(this).attr('id') === 'viewAll') {
-                $('.place-item').show();
-                $('.category').removeClass('selected');
-                return;
-            }
-
-            $('.category').removeClass('selected');
-            $(this).addClass('selected');
-
-            const selectedCategory = $(this).data('category').toLowerCase();
-
-            $('.place-item').each(function() {
-                const itemCategories = $(this).data('categories').toLowerCase();
-                if (itemCategories.includes(selectedCategory)) {
-                    $(this).show();
-                } else {
-                    $(this).hide();
-                }
-            });
-        });
-
-        $(document).ready(function() {
-            $('#viewAll').addClass('selected');
-        });
-
-        $('.category').on('click', function() {
+        $('.category').on('click', function () {
             if ($(this).attr('id') === 'viewAll') {
                 $('.place-item').show();
                 $('.category').removeClass('selected');
                 $(this).addClass('selected');
-
                 return;
             }
 
@@ -267,7 +289,7 @@
 
             const selectedCategory = $(this).data('category').toLowerCase();
 
-            $('.place-item').each(function() {
+            $('.place-item').each(function () {
                 const itemCategories = $(this).data('categories').toLowerCase();
                 if (itemCategories.includes(selectedCategory)) {
                     $(this).show();
@@ -275,14 +297,20 @@
                     $(this).hide();
                 }
             });
+        });
+
+        $(document).ready(function () {
+            $('#viewAll').addClass('selected');
         });
 
         function actualizarDistancias() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
+                    // Mantener la latitud y longitud especificadas
                     var lat = -33.4524759064743;
                     var lon = -70.66019643696536;
 
+                    // Llamada AJAX para calcular distancias en el servidor
                     $.ajax({
                         url: '/calcular_distancias',
                         method: 'POST',
@@ -291,14 +319,16 @@
                         success: function (response) {
                             const distances = response.distancias;
 
+                            // Actualizar cada elemento en el DOM con su distancia y almacenar las distancias
                             distances.forEach(function (item) {
                                 const distanciaElement = document.getElementById(`distance-${item.id}`);
                                 if (distanciaElement) {
                                     distanciaElement.innerHTML = `<i class="fas fa-walking mr-1"></i> ${item.distancia_km} km <br> (${item.cuadras} cuadras)`;
-                                    $(`#restorant-${item.id}`).closest('.place-item').data('distance', item.distancia_km);
+                                    $(`#restorant-${item.id}`).closest('.place-item').data('distance', item.distancia_km); // Almacenar distancia
                                 }
                             });
 
+                            // Ordenar los elementos en función de la distancia
                             ordenarPorDistancia();
                         },
                         error: function (error) {
@@ -308,28 +338,65 @@
                 }, function (error) {
                     console.error("Error al obtener la ubicación:", error.message);
                 }, {
-                    maximumAge: 0,
-                    timeout: 10000
+                    maximumAge: 0, // No cache
+                    timeout: 10000 // 10 seconds timeout
                 });
             } else {
                 console.error("La geolocalización no es soportada por este navegador.");
             }
         }
 
+        // Función para ordenar los elementos en el DOM por distancia
         function ordenarPorDistancia() {
             const $placesWrapper = $('#places-wrapper');
             const $placeItems = $placesWrapper.children('.place-item');
 
+            // Ordenar los elementos por la data de distancia
             $placeItems.sort(function (a, b) {
                 return $(a).data('distance') - $(b).data('distance');
             });
 
+            // Reinsertar los elementos en orden
             $placesWrapper.append($placeItems);
         }
 
+        // Ejecutar al cargar la página y luego cada 20 segundos
         actualizarDistancias();
-        setInterval(actualizarDistancias, 20000);
+        setInterval(actualizarDistancias, 20000); // Actualizar cada 20 segundos
+
+        $(document).on('click', '.show-more', function (event) {
+            // Prevenir que el evento se propague al contenedor del enlace
+            event.stopImmediatePropagation();
+
+            // Prevenir que se ejecute el enlace si el usuario hace clic en "más"
+            event.preventDefault();
+
+            var restaurantId = $(this).data('id'); // Obtener el ID del restaurante
+            var button = $(this);
+            var additionalCategories = $('#more-categories-' + restaurantId);
+
+            // Mostrar u ocultar las categorías adicionales
+            additionalCategories.toggle();
+
+            // Mover el botón "más" o "menos" debajo de la descripción
+            var buttonContainer = button.closest('.description');
+
+            if (additionalCategories.is(':visible')) {
+                // Si las categorías adicionales están visibles, cambia el texto a "menos"
+                button.text('menos');
+            } else {
+                // Si las categorías adicionales están ocultas, cambia el texto a "más"
+                button.text('más');
+            }
+
+            // Mover el botón debajo de la descripción
+            button.appendTo(buttonContainer); // Coloca el botón al final de la descripción
+        });
+
+
     </script>
+
+
 </body>
 
 </html>
