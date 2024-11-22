@@ -307,8 +307,8 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     // Mantener la latitud y longitud especificadas
-                    var lat = -33.4524759064743;
-                    var lon = -70.66019643696536;
+                    var lat = position.coords.latitude;
+                    var lon = position.coords.longitude;
 
                     // Llamada AJAX para calcular distancias en el servidor
                     $.ajax({
