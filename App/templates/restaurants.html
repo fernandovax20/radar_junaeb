@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
 
     <style>
         .carousel-item img {
@@ -37,19 +38,15 @@
             background-clip: text;
             display: flex;
             justify-content: center;
-            /* Asegúrate de centrar el contenido horizontalmente */
             align-items: center;
-            /* Asegúrate de centrar el contenido verticalmente */
             position: relative;
             width: 100%;
         }
 
-        /* Estilo de la flecha */
         .arrow-left {
             position: absolute;
             top: 50%;
             left: 10px;
-            /* Esto asegura que la flecha esté alineada a la izquierda */
             transform: translateY(-50%);
             font-size: 8vw;
             color: white;
@@ -60,12 +57,9 @@
             border-radius: 50%;
             display: flex;
             align-items: center;
-            /* Alinea el ícono de la flecha al centro verticalmente */
             justify-content: center;
-            /* Centra el ícono de la flecha horizontalmente */
             transition: background-color 0.3s, transform 0.3s;
         }
-
 
         .arrow-left:hover {
             background-color: #d2232a;
@@ -75,18 +69,15 @@
     </style>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-
 </head>
 
 <body style="font-family: Arial, sans-serif; background-color: #f8f8f8;">
     <div class="header d-flex align-items-center gap-2"
         style="font-family: 'Open Sans', sans-serif; font-size: 5rem; font-weight: 800; margin-top: 1rem; margin-bottom: 0.5rem; position: relative;">
-        <a href="/" class="arrow-left" title="Ir a la página principal" font-size="9vw" ;>
+        <a href="/" class="arrow-left" title="Ir a la página principal">
             <i class="fas fa-angle-left"></i>
         </a>
         <div style="position: relative; display: flex;">
-            <!-- Flecha hacia atrás -->
-
             <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: auto;">
                 <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar"
                     style="width: 9vw; height: auto; margin: 0; vertical-align: middle; margin-right: 8px;">
@@ -95,8 +86,6 @@
                     Radar Junaeb
                 </a>
             </div>
-
-
         </div>
     </div>
 
@@ -105,8 +94,8 @@
         <div id="map"></div>
         <div class="place d-flex justify-content-between align-items-center border-bottom py-3">
             <div>
-                <div class="name" style="font-size: 20px; font-weight: bold; margin-left: 10px;">{{ restaurante.nombre}}
-                </div>
+                <div class="name" style="font-size: 20px; font-weight: bold; margin-left: 10px;">{{ restaurante.nombre
+                    }}</div>
                 <div class="description" style="font-size: 14px; color: #d2232a; margin-left: 10px;">
                     <i class="fas fa-map-marker-alt"></i>
                     <a href="https://www.google.com/maps?q={{ restaurante.latitud }},{{ restaurante.longitud }}"
@@ -136,9 +125,8 @@
         <div class="categories d-flex justify-content-between align-items-center border-bottom py-3">
             <div>
                 <div class="name" style="font-size: 20px; font-weight: bold; margin-left: 10px;">Categorías: </div>
-
                 <div class="description" style="font-size: 14px; color: #666; margin-left: 10px;">
-                    {{restaurante.categoria}}
+                    {{ restaurante.categoria }}
                 </div>
             </div>
         </div>
@@ -150,7 +138,7 @@
             <div class="carousel-inner">
                 {% for imagen in restaurante.imagenes %}
                 <div class="carousel-item {% if loop.first %}active{% endif %}">
-                    <a href="{{ imagen.imagen_url }}" class="glightbox" data-gallery="gallery1">
+                    <a href="{{ imagen.imagen_url }}" class="glightbox" data-gallery=" gallery1">
                         <img src="{{ imagen.imagen_url }}" class="d-block" alt="Imagen del restaurante">
                     </a>
                 </div>
@@ -171,39 +159,63 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-
-    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
 
     <script>
         const latitud = {{ restaurante.latitud }};
         const longitud = {{ restaurante.longitud }};
 
-        console.log('Latitud:', latitud, 'Longitud:', longitud);
+        // Solicitar la ubicación del usuario
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                var tuLatitud = position.coords.latitude;
+                var tuLongitud = position.coords.longitude;
 
-        var map = L.map('map').setView([latitud, longitud], 19);
+                console.log('Tu Latitud:', tuLatitud, 'Tu Longitud:', tuLongitud);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap',
-            maxZoom: 19
-        }).addTo(map);
+                // Inicializar el mapa
+                var map = L.map('map').setView([latitud, longitud], 19);
 
-        L.marker([latitud, longitud]).addTo(map)
-            .bindPopup(`<a href="https://www.google.com/maps?q=${latitud},${longitud}" 
-            target="_blank" 
-            style="text-decoration: none; color: #000000;">{{ restaurante.nombre }}</a><br>
-            
-            <a href="https://www.google.com/maps?q=${latitud},${longitud}" 
-            target="_blank" 
-            style="text-decoration: none; color: #d2232a;">
-            {{ restaurante.direccion }}</a>
-             `)
-            .openPopup();
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap',
+                    maxZoom: 19
+                }).addTo(map);
 
+                // Marcador del restaurante
+                L.marker([latitud, longitud]).addTo(map)
+                    .bindPopup(`<a href="https://www.google.com/maps?q=${latitud},${longitud}" target="_blank" 
+                    style="text-decoration: none; color: #000000;">{{ restaurante.nombre }}</a><br>
+                    
+                    <a href="https://www.google.com/maps?q=${latitud},${longitud}" 
+                    target="_blank" 
+                    style="text-decoration: none; color: #d2232a;">
+                    {{ restaurante.direccion }}</a>`);
+
+                // Marcando la ruta desde tu dirección al restaurante
+                L.Routing.control({
+                    waypoints: [
+                        L.latLng(tuLatitud, tuLongitud), // Tu ubicación
+                        L.latLng(latitud, longitud) // Ubicación del restaurante
+                    ],
+                    routeWhileDragging: true,  // Permite arrastrar la ruta
+                    createMarker: function () { return null; }, // Desactiva la creación de un marcador
+                    show: false // Oculta la interfaz del panel de direcciones
+                }).addTo(map);
+
+            }, error => {
+                console.error('Error al obtener la ubicación:', error);
+                alert('No se pudo obtener la ubicación. Asegúrate de que la geolocalización esté habilitada.');
+            });
+        } else {
+            alert('La geolocalización no es soportada por este navegador.');
+        }
 
         const lightbox = GLightbox({
             selector: '.glightbox'
         });
+        actualizarDistancias();
+        setInterval(actualizarDistancias, 100);
     </script>
 
 </body>
