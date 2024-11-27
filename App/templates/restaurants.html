@@ -29,29 +29,43 @@
 
         .header {
             font-size: 48px;
-            font-weight: 600;
+            font-weight: 500;
             text-align: center;
             margin-top: 30px;
             color: transparent;
             background: linear-gradient(90deg, #d2232a, #d2232a);
             background-clip: text;
+            display: flex;
+            justify-content: center;
+            /* Asegúrate de centrar el contenido horizontalmente */
+            align-items: center;
+            /* Asegúrate de centrar el contenido verticalmente */
+            position: relative;
+            width: 100%;
         }
 
+        /* Estilo de la flecha */
         .arrow-left {
-            position: relative;
-            font-size: 30px;
-            margin-right: 20px;
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            /* Esto asegura que la flecha esté alineada a la izquierda */
+            transform: translateY(-50%);
+            font-size: 8vw;
             color: white;
             background-color: #d2232a;
-            width: 45px;
-            height: 45px;
+            width: 10vw;
+            height: 10vw;
             padding: 0;
             border-radius: 50%;
             display: flex;
             align-items: center;
+            /* Alinea el ícono de la flecha al centro verticalmente */
             justify-content: center;
+            /* Centra el ícono de la flecha horizontalmente */
             transition: background-color 0.3s, transform 0.3s;
         }
+
 
         .arrow-left:hover {
             background-color: #d2232a;
@@ -65,18 +79,25 @@
 </head>
 
 <body style="font-family: Arial, sans-serif; background-color: #f8f8f8;">
-    <div class="header d-flex align-items-center justify-content-center gap-2"
-        style="font-family: 'Open Sans', sans-serif; font-size: 36px; font-weight: 500; margin-top: 15px; margin-bottom: 10px;">
-        <a href="/" class="arrow-left" title="Ir a la página principal">
+    <div class="header d-flex align-items-center gap-2"
+        style="font-family: 'Open Sans', sans-serif; font-size: 5rem; font-weight: 800; margin-top: 1rem; margin-bottom: 0.5rem; position: relative;">
+        <a href="/" class="arrow-left" title="Ir a la página principal" font-size="9vw" ;>
             <i class="fas fa-angle-left"></i>
         </a>
-        <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar"
-            style="width: 40px; height: auto;">
-        <a href="/" class="title" style="color: #d2232a; text-decoration: none;">
-            Radar Junaeb
-        </a>
-        <!-- Añadir el enlace con la flecha -->
+        <div style="position: relative; display: flex;">
+            <!-- Flecha hacia atrás -->
 
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: auto;">
+                <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar"
+                    style="width: 9vw; height: auto; margin: 0; vertical-align: middle; margin-right: 8px;">
+                <a href="/" class="title" style="color: #d2232a; text-decoration: none; white-space: nowrap; text-align: center; align-items: center; 
+                    font-size: 9vw;">
+                    Radar Junaeb
+                </a>
+            </div>
+
+
+        </div>
     </div>
 
     <div class="restaurant" style="max-height: 90vh; overflow-y: auto;">

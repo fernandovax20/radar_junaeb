@@ -16,10 +16,15 @@
             background-color: white;
         }
 
+        .title {
+            white-space: nowrap;
+        }
+
         .header {
             font-size: 48px;
-            font-weight: 600;
+            font-weight: 500;
             text-align: center;
+            position: relative;
             margin-top: 30px;
             color: transparent;
             background: linear-gradient(90deg, #d2232a, #d2232a);
@@ -217,10 +222,16 @@
 <body style="font-family: Arial, sans-serif; background-color: #f8f8f8;">
     <div class="container my-3">
         <div class="header d-flex align-items-center justify-content-center gap-2"
-            style="font-family: 'Open Sans', sans-serif; font-size: 36px; font-weight: 500; margin-top: 5px;">
-            <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar"
-                style="width: 40px; height: auto;">
-            <span>Radar Junaeb</span>
+            style="font-family: 'Open Sans', sans-serif; font-size: 3rem; font-weight: 600; margin-top: 5px;">
+
+            <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: auto;">
+                <img src="{{ url_for('static', filename='image/image.png') }}" alt="Logo de Radar"
+                    style="width: 9vw; height: auto; margin: 0; vertical-align: middle; margin-right: 8px;">
+                <a href="/" class="title" style="color: #d2232a; text-decoration: none; white-space: nowrap; text-align: center; align-items: center; 
+                    font-size: 9vw;">
+                    Radar Junaeb
+                </a>
+            </div>
 
         </div>
         <div class="search-bar">
